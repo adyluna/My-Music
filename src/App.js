@@ -15,6 +15,7 @@ class App extends React.Component {
     this.state = {
       userName: '',
       loginSubmitButton: true,
+      searchArtistName: '',
     };
   }
 
@@ -39,7 +40,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { loginSubmitButton, userName } = this.state;
+    const { loginSubmitButton, userName, searchArtistName } = this.state;
 
     return (
       <BrowserRouter>
@@ -55,7 +56,13 @@ class App extends React.Component {
               disabled={ loginSubmitButton }
             />) }
           />
-          <Route path="/search" component={ Search } />
+          <Route
+            path="/search"
+            render={ () => (<Search
+              onChange={ this.onChange }
+              value={ searchArtistName }
+            />) }
+          />
           <Route path="/album/:id" component={ Album } />
           <Route path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />
