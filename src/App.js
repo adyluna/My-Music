@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Album from './pages/Album';
+import searchAlbumsAPI from './services/searchAlbumsAPI';
 import Favorites from './pages/Favorites';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
@@ -16,6 +17,9 @@ class App extends React.Component {
       userName: '',
       loginSubmitButton: true,
       searchArtistName: '',
+      currentArtistName: '',
+      albums: null,
+      isSearchLoading: false,
     };
   }
 
@@ -39,8 +43,28 @@ class App extends React.Component {
     });
   };
 
+  searchArtist = async () => {
+    const { searchArtistName } = this.state;
+    this.setState(
+      { albums: await searchAlbumsAPI(searchArtistName), isSearchLoading: true },
+      () => this.setState(
+        {
+          currentArtistName: searchArtistName,
+          searchArtistName: '',
+          isSearchLoading: false },
+      ),
+    );
+  };
+
   render() {
-    const { loginSubmitButton, userName, searchArtistName } = this.state;
+    const {
+      loginSubmitButton,
+      userName,
+      searchArtistName,
+      albums,
+      currentArtistName,
+      isSearchLoading,
+    } = this.state;
 
     return (
       <BrowserRouter>
@@ -59,8 +83,12 @@ class App extends React.Component {
           <Route
             path="/search"
             render={ () => (<Search
+              albums={ albums }
               onChange={ this.onChange }
               value={ searchArtistName }
+              isSearchLoading={ isSearchLoading }
+              searchArtistAlbums={ this.searchArtist }
+              currentArtistName={ currentArtistName }
             />) }
           />
           <Route path="/album/:id" component={ Album } />
