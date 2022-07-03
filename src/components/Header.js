@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Carregando from '../pages/Carregando';
 
@@ -16,12 +17,26 @@ class Header extends Component {
     this.setState({ isUserLoaded: user.name });
   }
 
+  loadHeader = () => {
+    const { isUserLoaded } = this.state;
+    return (
+      <>
+        <h3 data-testid="header-user-name">
+          { isUserLoaded }
+        </h3>
+        <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
+        <Link to="/favorites" data-testid="link-to-favorites">Músicas Favoritas</Link>
+        <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+      </>
+    );
+  }
+
   render() {
     const { isUserLoaded } = this.state;
     return (
       <header data-testid="header-component">
         { isUserLoaded
-          ? <h3 data-testid="header-user-name">{ isUserLoaded }</h3>
+          ? this.loadHeader()
           : <Carregando /> }
       </header>
     );
