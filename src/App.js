@@ -9,11 +9,52 @@ import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      userName: '',
+      loginSubmitButton: true,
+    };
+  }
+
+  onChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  checkName = ({ target }) => {
+    const { name, value } = target;
+    const minNameLength = 3;
+    this.setState({
+      [name]: value,
+    }, () => {
+      if (value.length >= minNameLength) {
+        this.setState({ loginSubmitButton: false });
+      }
+    });
+  };
+
   render() {
+    const { loginSubmitButton, userName } = this.state;
+
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ Login } />
+          <Route
+            exact
+            path="/"
+            render={ () => (<Login
+              value={ userName }
+              name="userName"
+              onChange={ this.checkName }
+              buttonName="loginSubmitButton"
+              disabled={ loginSubmitButton }
+            />) }
+          />
           <Route path="/search" component={ Search } />
           <Route path="/album/:id" component={ Album } />
           <Route path="/favorites" component={ Favorites } />
