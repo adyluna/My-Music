@@ -29,7 +29,7 @@ class Search extends Component {
   SearchResult = () => {
     const { currentArtistName, albums } = this.props;
     const searchResultMessage = `Resultado de álbuns de: ${currentArtistName}`;
-    if (albums.length === 0) {
+    if (albums[0] === undefined) {
       return (
         <p>Nenhum álbum foi encontrado</p>
       );
@@ -83,11 +83,15 @@ class Search extends Component {
 
 Search.propTypes = {
   currentArtistName: PropTypes.string.isRequired,
-  albums: PropTypes.arrayOf(PropTypes.object).isRequired,
-  searchArtistAlbums: PropTypes.string.isRequired,
+  albums: PropTypes.arrayOf(PropTypes.object),
+  searchArtistAlbums: PropTypes.func.isRequired,
   isSearchLoading: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+};
+
+Search.defaultProps = {
+  albums: null,
 };
 
 export default Search;
