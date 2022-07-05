@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Input extends Component {
   render() {
-    const { name, type, label, testid, checked, value, onChange } = this.props;
+    const { name, type, label, testid, checked, onChange } = this.props;
 
     return (
       <label htmlFor={ name }>
@@ -12,7 +12,6 @@ class Input extends Component {
           checked={ checked }
           id={ name }
           name={ name }
-          value={ value }
           type={ type }
           onChange={ onChange }
           data-testid={ testid }
@@ -25,7 +24,7 @@ class Input extends Component {
 
 Input.propTypes = {
   checked: PropTypes.bool,
-  testid: PropTypes.string.isRequired,
+  testid: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([
@@ -35,14 +34,17 @@ Input.propTypes = {
   ]),
   label: PropTypes.string,
   onChange: PropTypes.func,
+  handleAddFavorite: PropTypes.func,
 };
 
 Input.defaultProps = {
   name: '',
   label: '',
   onChange: null,
+  handleAddFavorite:null,
   value: '',
   checked: null,
+  testid: '',
 };
 
 export default Input;

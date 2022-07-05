@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Carregando from './Carregando';
 import Header from '../components/Header';
-import Input from './Input';
+import Input from '../components/Input';
 
 class Search extends Component {
   createAlbumElement = (albums) => albums.map((

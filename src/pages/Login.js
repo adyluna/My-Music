@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
-import Input from './Input';
+import Input from '../components/Input';
 import Carregando from './Carregando';
 
 class Login extends Component {

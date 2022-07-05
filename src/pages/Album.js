@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import Carregando from './Carregando';
+import { addSong } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   constructor() {
@@ -10,6 +12,7 @@ class Album extends Component {
 
     this.state = {
       loadedAlbum: null,
+      isSongSaved: true,
     };
   }
 
@@ -20,9 +23,23 @@ class Album extends Component {
     this.setState({ loadedAlbum: fetchResult });
   }
 
+  // onChange = ({ target }) => {
+  //   const { name } = target;
+  //   const value = target.type === 'checkbox' ? target.checked : target.value;
+  //   this.setState({
+  //     [name]: value,
+  //   })
+  // };
+
+  handleLoading = () => {
+    this.setState((prev) => ({isSongSaved: !prev.isSongSaved}))
+  };
+
   LoadAlbumMusics = () => {
-    const { loadedAlbum } = this.state;
-    return (
+    const { loadedAlbum, isSongSaved } = this.state;
+    if (!isSongSaved) {
+      return <Carregando />
+    } return (
       <div
         key={
           loadedAlbum[0].amgArtistId
@@ -32,13 +49,14 @@ class Album extends Component {
       >
         <h3 data-testid="artist-name">{ loadedAlbum[0].artistName }</h3>
         <h3 data-testid="album-name">{loadedAlbum[0].collectionName}</h3>
-        { loadedAlbum.slice(1).map(({ trackName, previewUrl, trackId }, index) => (
-          <MusicCard
-            index={ index }
-            key={ trackId }
-            trackName={ trackName }
-            previewUrl={ previewUrl }
-          />)) }
+        { loadedAlbum.slice(1).map((elem, index) => 
+            <MusicCard
+          index={ index }
+          key={ elem.trackId }
+          song={ {...elem} }
+          handleLoading={ this.handleLoading }
+        />
+        ) }
       </div>
     );
   };
@@ -55,7 +73,11 @@ class Album extends Component {
 }
 
 Album.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.objectOf(PropTypes.any),
+};
+
+Album.defaultPropTypes = {
+  match: null,
 };
 
 export default Album;
