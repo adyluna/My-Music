@@ -41,8 +41,7 @@ class MusicCard extends Component {
 
   render() {
     const { isChecked } = this.state;
-    const { index, song } = this.props;
-    const audioAlt = `Track Name ${index + 1}`;
+    const { song } = this.props;
 
     return (
       <div>
@@ -58,7 +57,6 @@ class MusicCard extends Component {
         />
         <audio data-testid="audio-component" src={ song.previewUrl } controls>
           <track kind="captions" />
-          {audioAlt}
           <code>audio</code>
         </audio>
       </div>
@@ -67,7 +65,6 @@ class MusicCard extends Component {
 }
 
 MusicCard.propTypes = {
-  index: PropTypes.number.isRequired,
   handleLoading: PropTypes.func.isRequired,
   song: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.string,
