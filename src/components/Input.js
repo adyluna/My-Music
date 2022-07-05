@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 
 class Input extends Component {
   render() {
-    const { name, type, label, testid, checked, onChange } = this.props;
+    const { name, type, label, testid, checked, onChange, id } = this.props;
 
     return (
       <label htmlFor={ name }>
         { label }
         <input
+          key={ testid }
           checked={ checked }
-          id={ name }
+          id={ id }
           name={ name }
           type={ type }
           onChange={ onChange }
@@ -23,26 +24,23 @@ class Input extends Component {
 }
 
 Input.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   checked: PropTypes.bool,
   testid: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool,
-  ]),
   label: PropTypes.string,
   onChange: PropTypes.func,
-  handleAddFavorite: PropTypes.func,
 };
 
 Input.defaultProps = {
+  id: '',
   name: '',
   label: '',
   onChange: null,
-  handleAddFavorite:null,
-  value: '',
   checked: null,
   testid: '',
 };
