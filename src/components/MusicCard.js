@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
   constructor() {
@@ -13,13 +13,31 @@ class MusicCard extends Component {
   }
 
   componentDidMount() {
+    this.handle8LastRequirement();
     this.handlChecked();
   }
 
-  handlChecked = () => {
+  handlChecked = async () => {
+    const { song } = this.props;
+    // const FAVORITE_SONGS_KEY = 'favorite_songs';
+
+    // if (!JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY))) {
+    //   localStorage.setItem(FAVORITE_SONGS_KEY, JSON.stringify([]));
+    // }
+    // const readFavoriteSongs = JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY));
+    const favorites = await getFavoriteSongs();
+
+    favorites.filter(({
+      trackId }) => {
+      if (trackId === song.trackId) {
+        this.setState({ isChecked: true });
+      } return true;
+    });
+  };
+
+  handle8LastRequirement = async () => {
     const { song } = this.props;
     const FAVORITE_SONGS_KEY = 'favorite_songs';
-
     if (!JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY))) {
       localStorage.setItem(FAVORITE_SONGS_KEY, JSON.stringify([]));
     }
@@ -28,7 +46,7 @@ class MusicCard extends Component {
       trackId }) => {
       if (trackId === song.trackId) {
         this.setState({ isChecked: true });
-      } return true;
+      } return false;
     });
   };
 
