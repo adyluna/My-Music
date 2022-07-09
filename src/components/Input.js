@@ -6,8 +6,10 @@ class Input extends Component {
     const { name, type, label, testid, checked, onChange, id } = this.props;
 
     return (
-      <label htmlFor={ name }>
-        { label }
+      <div>
+        <label htmlFor={ id }>
+          { label }
+        </label>
         <input
           key={ testid }
           checked={ checked }
@@ -18,7 +20,7 @@ class Input extends Component {
           data-testid={ testid }
           required
         />
-      </label>
+      </div>
     );
   }
 }
