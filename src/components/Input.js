@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Input extends Component {
   render() {
-    const { name, type, label, testid, checked, onChange, id } = this.props;
+    const { name, type, label, testid, checked, onChange, id, value } = this.props;
 
     return (
       <div>
@@ -11,6 +11,7 @@ class Input extends Component {
           { label }
         </label>
         <input
+          value={ value }
           key={ testid }
           checked={ checked }
           id={ id }
@@ -26,6 +27,7 @@ class Input extends Component {
 }
 
 Input.propTypes = {
+  value: PropTypes.string,
   id: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -39,6 +41,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  value: '',
   id: '',
   name: '',
   label: '',

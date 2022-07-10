@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Album from './pages/Album';
@@ -21,6 +21,7 @@ class App extends React.Component {
       currentArtistName: '',
       albums: null,
       isSearchLoading: false,
+      isProfileUpdated: false,
     };
   }
 
@@ -57,6 +58,8 @@ class App extends React.Component {
     );
   };
 
+  handleProfileUpdateRedirect = () => this.setState({ isProfileUpdated: true });
+
   render() {
     const {
       loginSubmitButton,
@@ -65,6 +68,7 @@ class App extends React.Component {
       albums,
       currentArtistName,
       isSearchLoading,
+      isProfileUpdated,
     } = this.state;
 
     return (
@@ -95,7 +99,11 @@ class App extends React.Component {
           <Route path="/album/:id" component={ Album } />
           <Route path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />
-          <Route exact path="/profile/edit" component={ ProfileEdit } />
+          <Route exact path="/profile/edit">
+            { isProfileUpdated
+              ? <Redirect to="/profile" />
+              : <ProfileEdit handleChange={ this.handleProfileUpdateRedirect } /> }
+          </Route>
           <Route path="*" component={ NotFound } />
           <p>TrybeTunes</p>
         </Switch>
