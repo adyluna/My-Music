@@ -40,18 +40,18 @@ class Favorites extends Component {
     if (loadedFavorites.length === 0) {
       return <h4>Você ainda não possui músicas favoritas</h4>;
     } return (
-      loadedFavorites.map((elem) => (<MusicCard
+      <div className="favoritesSection" >{loadedFavorites.map((elem) => (<MusicCard
         key={ elem.trackId }
         song={ { ...elem } }
         handleLoading={ this.handleLoading }
-      />))
+      />))}</div>
     );
   };
 
   render() {
     const { loadedFavorites } = this.state;
     return (
-      <div data-testid="page-favorites">
+      <div className="Favorites" data-testid="page-favorites">
         <Header />
         { loadedFavorites && <this.LoadFavorites /> }
       </div>

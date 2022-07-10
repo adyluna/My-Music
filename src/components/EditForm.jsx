@@ -66,7 +66,7 @@ class EditForm extends Component {
   render() {
     const { name, image, description, email, saveButtonDisabled } = this.state;
     return (
-      <form>
+      <form className="formInputs">
         <Input
           name="name"
           type="text"
@@ -81,6 +81,7 @@ class EditForm extends Component {
           testid="edit-input-email"
           label="Email"
           value={ email }
+          placeholder="example@example.com"
           onChange={ this.onChange }
         />
         <Input
@@ -88,6 +89,7 @@ class EditForm extends Component {
           type="textarea"
           testid="edit-input-description"
           label="Descrição"
+          placeholder="Sobre mim"
           value={ description }
           onChange={ this.onChange }
         />
@@ -96,6 +98,7 @@ class EditForm extends Component {
           type="text"
           testid="edit-input-image"
           label="Foto"
+          placeholder="Cole aqui o URL da imagem"
           value={ image }
           onChange={ this.onChange }
         />

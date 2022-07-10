@@ -13,18 +13,21 @@ class Search extends Component {
       artworkUrl100,
       collectionName,
     },
-  ) => (
-    <div key={ collectionId }>
+  ) => {
+    const length = 40;
+    const shortCollectionName = collectionName.substring(0, length);
+    return (
+    <div className="searchAlbum" key={ collectionId }>
       <Link
         to={ `/album/${collectionId}` }
         data-testid={ `link-to-album-${collectionId}` }
       >
-        {collectionName}
+        { collectionName.length > 40 ? shortCollectionName + "..." : collectionName}
       </Link>
-      <img src={ artworkUrl100 } alt={ collectionName } />
+      <img src={ artworkUrl100 } alt={ collectionName } style={ { maxWidth: 100 } }/>
       <p style={ { fontSize: 11 } }>{artistName}</p>
     </div>
-  ));
+  )});
 
   SearchResult = () => {
     const { currentArtistName, albums } = this.props;
@@ -36,10 +39,12 @@ class Search extends Component {
     } return (
       <div>
         <this.LoadSearchInput />
-        <p>
-          {searchResultMessage}
-        </p>
-        {this.createAlbumElement(albums)}
+          <p style={{ textAlign: "center", fontSize: 35 }}>
+            {searchResultMessage}
+          </p>
+          <div className="loadedAlbums">
+            {this.createAlbumElement(albums)}
+          </div>
       </div>
     );
   }
@@ -50,8 +55,9 @@ class Search extends Component {
     if (isSearchLoading) {
       return <Carregando />;
     } return (
-      <div>
+      <div className="Search">
         <Header />
+        <div className='searchInput'>
         <Input
           name="searchArtistName"
           type="text"
@@ -67,6 +73,7 @@ class Search extends Component {
         >
           Pesquisar
         </button>
+        </div>
       </div>
     );
   }

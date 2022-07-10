@@ -72,6 +72,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
+    <div className='App'>
       <BrowserRouter>
         <Switch>
           <Route
@@ -108,7 +109,7 @@ class App extends React.Component {
           <p>TrybeTunes</p>
         </Switch>
       </BrowserRouter>
-
+    </div>        
     );
   }
 }

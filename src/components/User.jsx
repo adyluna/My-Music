@@ -7,7 +7,7 @@ class User extends Component {
     const { name, image, email, description } = this.props;
     const editProfile = 'Editar perfil';
     return (
-      <div>
+      <div className="userSection">
         <img
           data-testid="profile-image"
           className="profileImage"

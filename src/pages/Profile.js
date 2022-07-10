@@ -40,18 +40,18 @@ class Profile extends Component {
     //   fLLvwEbgOmSzk1_jQ0MgDATEVcVOh_kqEe0rqi7aM5A=`;
     if (!user) {
       return <Carregando />;
-    } return (<User
+    } return <div className="profileSection"><User
       name={ user.name }
       image={ user.image }
       description={ user.description }
       email={ user.email }
-    />);
+    /></div>;
   }
 
   render() {
     const { user } = this.state;
     return (
-      <div data-testid="page-profile">
+      <div className="Profile" data-testid="page-profile">
         <Header />
         { user && <this.RenderUser /> }
       </div>

@@ -19,12 +19,6 @@ class MusicCard extends Component {
 
   handlChecked = async () => {
     const { song } = this.props;
-    // const FAVORITE_SONGS_KEY = 'favorite_songs';
-
-    // if (!JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY))) {
-    //   localStorage.setItem(FAVORITE_SONGS_KEY, JSON.stringify([]));
-    // }
-    // const readFavoriteSongs = JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY));
     const favorites = await getFavoriteSongs();
 
     favorites.filter(({
@@ -69,7 +63,7 @@ class MusicCard extends Component {
     const { song } = this.props;
 
     return (
-      <div>
+      <div className="MusicCard">
         <h4>{ song.trackName }</h4>
         <Input
           id={ song.trackId }
