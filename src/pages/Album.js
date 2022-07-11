@@ -41,11 +41,11 @@ class Album extends Component {
         <h3 data-testid="artist-name">{ loadedAlbum[0].artistName }</h3>
         <h3 data-testid="album-name">{loadedAlbum[0].collectionName}</h3>
         <div className="albumSection">
-        { loadedAlbum.slice(1).map((elem) => (<MusicCard
-          key={ elem.trackId }
-          song={ { ...elem } }
-          handleLoading={ this.handleLoading }
-        />)) }
+          { loadedAlbum.slice(1).map((elem) => (<MusicCard
+            key={ elem.trackId }
+            song={ { ...elem } }
+            handleLoading={ this.handleLoading }
+          />)) }
         </div>
       </div>
     );

@@ -25,7 +25,11 @@ class Login extends Component {
     return (
       <div className="Login" data-testid="page-login">
         <h1>MyMusic</h1>
-        <h3>Olá! Digite seu nome para começar.</h3>
+        <h3>
+          Olá!
+          <br />
+          Digite seu nome para começar.
+        </h3>
         <Input
           name={ name }
           type="text"

@@ -20,14 +20,35 @@ class Header extends Component {
   loadHeader = () => {
     const { isUserLoaded } = this.state;
     return (
-      <div className='Header' >
-        <h3 data-testid="header-user-name">
+      <div className="Header">
+        <h3 style={ { fontSize: 30 } } data-testid="header-user-name">
           { isUserLoaded }
         </h3>
         <div className="nagivation">
-        <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
-        <Link to="/favorites" data-testid="link-to-favorites">Músicas Favoritas</Link>
-        <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+          <Link
+            style={ { color: 'white', fontWeight: 'bold' } }
+            to="/search"
+            data-testid="link-to-search"
+          >
+            Pesquisar
+
+          </Link>
+          <Link
+            style={ { color: 'white', fontWeight: 'bold' } }
+            to="/favorites"
+            data-testid="link-to-favorites"
+          >
+            Músicas Favoritas
+
+          </Link>
+          <Link
+            style={ { color: 'white', fontWeight: 'bold' } }
+            to="/profile"
+            data-testid="link-to-profile"
+          >
+            Perfil
+
+          </Link>
         </div>
       </div>
     );

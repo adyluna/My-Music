@@ -24,28 +24,17 @@ class Profile extends Component {
 
   RenderUser = () => {
     const { user } = this.state;
-    // const description = `
-    //   Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    //   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    //   Ut enim ad minim veniam, quis nostrud exercitation ullamco
-    //   laboris nisi ut aliquip ex ea commodo consequat.
-    //   Duis aute irure dolor in reprehenderit in voluptate velit esse
-    //   cillum dolore eu fugiat nulla pariatur.
-    //   Excepteur sint occaecat cupidatat
-    //   non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
-
-    // const defaultProfileImage = `https://media.istockphoto.com/vectors/
-    //   male-profile-flat-blue-simple-icon-with-long-shadow-vector-
-    //   id522855255?k=20&m=522855255&s=612x612&w=0&h=
-    //   fLLvwEbgOmSzk1_jQ0MgDATEVcVOh_kqEe0rqi7aM5A=`;
     if (!user) {
       return <Carregando />;
-    } return <div className="profileSection"><User
-      name={ user.name }
-      image={ user.image }
-      description={ user.description }
-      email={ user.email }
-    /></div>;
+    } return (
+      <div className="profileSection">
+        <User
+          name={ user.name }
+          image={ user.image }
+          description={ user.description }
+          email={ user.email }
+        />
+      </div>);
   }
 
   render() {

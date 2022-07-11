@@ -72,44 +72,44 @@ class App extends React.Component {
     } = this.state;
 
     return (
-    <div className='App'>
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={ () => (<Login
-              value={ userName }
-              name="userName"
-              onChange={ this.checkName }
-              buttonName="loginSubmitButton"
-              disabled={ loginSubmitButton }
-            />) }
-          />
-          <Route
-            path="/search"
-            render={ () => (<Search
-              albums={ albums }
-              onChange={ this.onChange }
-              value={ searchArtistName }
-              isSearchLoading={ isSearchLoading }
-              searchArtistAlbums={ this.searchArtist }
-              currentArtistName={ currentArtistName }
-            />) }
-          />
-          <Route path="/album/:id" component={ Album } />
-          <Route path="/favorites" component={ Favorites } />
-          <Route exact path="/profile" component={ Profile } />
-          <Route exact path="/profile/edit">
-            { isProfileUpdated
-              ? <Redirect to="/profile" />
-              : <ProfileEdit handleChange={ this.handleProfileUpdateRedirect } /> }
-          </Route>
-          <Route path="*" component={ NotFound } />
-          <p>TrybeTunes</p>
-        </Switch>
-      </BrowserRouter>
-    </div>        
+      <div className="App">
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={ () => (<Login
+                value={ userName }
+                name="userName"
+                onChange={ this.checkName }
+                buttonName="loginSubmitButton"
+                disabled={ loginSubmitButton }
+              />) }
+            />
+            <Route
+              path="/search"
+              render={ () => (<Search
+                albums={ albums }
+                onChange={ this.onChange }
+                value={ searchArtistName }
+                isSearchLoading={ isSearchLoading }
+                searchArtistAlbums={ this.searchArtist }
+                currentArtistName={ currentArtistName }
+              />) }
+            />
+            <Route path="/album/:id" component={ Album } />
+            <Route path="/favorites" component={ Favorites } />
+            <Route exact path="/profile" component={ Profile } />
+            <Route exact path="/profile/edit">
+              { isProfileUpdated
+                ? <Redirect to="/profile" />
+                : <ProfileEdit handleChange={ this.handleProfileUpdateRedirect } /> }
+            </Route>
+            <Route path="*" component={ NotFound } />
+            <p>TrybeTunes</p>
+          </Switch>
+        </BrowserRouter>
+      </div>
     );
   }
 }

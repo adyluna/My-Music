@@ -17,17 +17,19 @@ class Search extends Component {
     const length = 40;
     const shortCollectionName = collectionName.substring(0, length);
     return (
-    <div className="searchAlbum" key={ collectionId }>
-      <Link
-        to={ `/album/${collectionId}` }
-        data-testid={ `link-to-album-${collectionId}` }
-      >
-        { collectionName.length > 40 ? shortCollectionName + "..." : collectionName}
-      </Link>
-      <img src={ artworkUrl100 } alt={ collectionName } style={ { maxWidth: 100 } }/>
-      <p style={ { fontSize: 11 } }>{artistName}</p>
-    </div>
-  )});
+      <div className="searchAlbum" key={ collectionId }>
+        <Link
+          to={ `/album/${collectionId}` }
+          data-testid={ `link-to-album-${collectionId}` }
+          style={ { color: 'black', fontWeight: 'bold' } }
+        >
+          { collectionName.length > length ? `${shortCollectionName}...` : collectionName}
+        </Link>
+        <img src={ artworkUrl100 } alt={ collectionName } style={ { maxWidth: 100 } } />
+        <p style={ { fontSize: 11 } }>{artistName}</p>
+      </div>
+    );
+  });
 
   SearchResult = () => {
     const { currentArtistName, albums } = this.props;
@@ -37,14 +39,14 @@ class Search extends Component {
         <p>Nenhum álbum foi encontrado</p>
       );
     } return (
-      <div>
+      <div className="loadedContainer">
         <this.LoadSearchInput />
-          <p style={{ textAlign: "center", fontSize: 35 }}>
-            {searchResultMessage}
-          </p>
-          <div className="loadedAlbums">
-            {this.createAlbumElement(albums)}
-          </div>
+        <p style={ { textAlign: 'center', fontSize: 35 } }>
+          {searchResultMessage}
+        </p>
+        <div className="loadedAlbums">
+          {this.createAlbumElement(albums)}
+        </div>
       </div>
     );
   }
@@ -57,22 +59,22 @@ class Search extends Component {
     } return (
       <div className="Search">
         <Header />
-        <div className='searchInput'>
-        <Input
-          name="searchArtistName"
-          type="text"
-          value={ value }
-          testid="search-artist-input"
-          onChange={ onChange }
-        />
-        <button
-          type="button"
-          data-testid="search-artist-button"
-          disabled={ enableSearchButton }
-          onClick={ () => searchArtistAlbums() }
-        >
-          Pesquisar
-        </button>
+        <div className="searchInput">
+          <Input
+            name="searchArtistName"
+            type="text"
+            value={ value }
+            testid="search-artist-input"
+            onChange={ onChange }
+          />
+          <button
+            type="button"
+            data-testid="search-artist-button"
+            disabled={ enableSearchButton }
+            onClick={ () => searchArtistAlbums() }
+          >
+            Pesquisar
+          </button>
         </div>
       </div>
     );

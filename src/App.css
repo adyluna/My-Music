@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap') ;
+
 .App {
-  display: flex;
-  /* border: 1px solid red; */
-  justify-content: space-between;
-  flex-direction: column;
   align-items: center;
+  background-color: hsl(163, 62%, 89%);
+  display: flex;
+  flex-direction: column;
+  font-family: Nunito , sans-serif;
+  justify-content: space-between;
   margin: 10px;
+  margin-left: 80px;
   max-height: 1450px;
+  padding: 20px;
+  width: 1210px;
 }
 
 .profileImage {
@@ -14,43 +20,57 @@
 }
 
 .Header {
-  border: 1px solid red;
+  align-items: center;
+  background-color: hsl(163, 62%, 89%);
+  border: 1px;
+  color: hsl(201, 13%, 25%);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 20px;
-  width: 1200px;
-  justify-content: space-evenly;
   height: 230px;
+  justify-content: space-evenly;
+  margin: 20px;
+  width: 1300px;
 }
 
-a:link { text-decoration: none; }
+a:link { text-decoration: none;}
 
 .nagivation {
-  height: 110px;
-  width: 900px;
-  border: 1px solid red;
-  display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  background-color: hsl(196, 10%, 55%);
+  border-radius: 1rem;
+  display: flex;
   font-size: 25px;
+  height: 110px;
+  justify-content: space-evenly;
+  width: 900px;
 }
 
 .loginArea {
-  height: 600px;
+  align-items: center;
+  background-color: hsl(196, 10%, 55%);
   display: flex;
   flex-direction: column;
+  height: 600px;
   justify-content: center;
+  width: 1300px;
 }
 
 .Login {
+  align-items: center;
+  background-color: hsl(163, 62%, 89%);
+  background-image: url('./noteMusic.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 260px;
+  border-radius: 50%;
+  color: hsl(201, 13%, 25%);
   display: flex;
   flex-direction: column;
   height: 400px;
-  width: 400px;
   justify-content: center;
   margin: 10px;
-  align-items: center;
+  text-align: center;
+  width: 400px;
 }
 
 .loginButton {
@@ -58,141 +78,151 @@ a:link { text-decoration: none; }
 }
 
 .Search {
+  align-items: center;
+  background-color: hsl(163, 62%, 89%);
+  border: 1px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   height: 400px;
-  min-width: 910px;
   justify-content: space-evenly;
+  min-width: 910px;
 
 }
 
 .searchInput {
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
-  width: 400px;
-  justify-content: space-evenly;
   align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 300px;
+}
+
+.loadedContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .loadedAlbums {
-  /* border: 1px solid red; */
+  align-items: center;
+  background-color: hsl(196, 10%, 55%);
+  border-radius: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 1200px;
+  padding: 20px;
+  width: 1100px;
 }
 
 .searchAlbum {
-  /* border: 1px solid red; */
-  height: 200px;
-  width: 200px;
-  margin: 10px;
-  padding: 20px;
+  align-items: center;
+  background-color: hsl(163, 62%, 89%);
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  height: 200px;
   justify-content: space-between;
-  align-items: center;
+  margin: 10px;
+  padding: 20px;
   text-align: center;
+  width: 200px;
 }
 
 .Favorites {
-  /* border: 1px solid red; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   min-height: 450px;
-  width: 1200px;
   padding: 10px;
+  width: 1200px;
 }
 
 .favoritesSection {
-  /* border: 1px solid red; */
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  padding: 20px;
   max-height: 2000px;
+  padding: 20px;
 }
 
 .Album {
-  /* border: 1px solid red; */
-  width: 1200px;
+  align-items: center;
   display: flex;
   flex-direction: column;
   max-height: 1000px;
   text-align: center;
-  align-items: center;
+  width: 1200px;
 }
 
 .albumSection {
-  /* border: 1px solid red; */
   display: flex;
   flex-flow: row wrap;
   height: 900px;
   justify-content: space-evenly;
-  padding: 20px;
   max-height: 1500px;
+  padding: 20px;
 }
 
 .MusicCard {
+  background-color: hsl(351, 79%, 71%);
+  border-radius: 1rem;
   font-size: smaller;
-  border: 1px solid red;
- text-align: center;
- width: 320px;
- height: 130px;
- margin: 20px;
+  height: 150px;
+  margin: 20px;
+  text-align: center;
+  width: 320px;
 }
 
 .Profile {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .profileSection {
-  /* border: 1px solid red; */
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 500px;
   justify-content: center;
   width: 1200px;
-  height: 500px;
 }
 
 .userSection {
-  /* border: 1px solid red; */
+  align-items: center;
+  background-color: hsl(196, 10%, 55%);
+  border: 1px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
   max-width: 600px;
   min-height: 450px;
-  padding: 10px;
-  justify-content: flex-start;
+  padding: 20px;
+  width: 300px;
 }
 
 .profileEdit {
-  border: 1px solid red;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.profileEditForm{
-  border: 1px solid red;
-  width: 1200px;
+.profileEditForm {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-height: 300px;
   justify-content: center;
+  min-height: 300px;
   padding: 10px;
   text-align: center;
+  width: 1200px;
 }
 
 .formInputs {
-  border: 1px solid red;
-  min-height: 270px;
+  background-color: hsl(196, 10%, 55%);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  min-height: 270px;
   padding: 10px;
 }

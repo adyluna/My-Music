@@ -28,7 +28,12 @@ class ProfileEdit extends Component {
     const { handleChange } = this.props;
     if (!user) {
       return <Carregando />;
-    } return <div className="profileEditForm"><EditForm user={ user } handleChange={ handleChange } /></div>;
+    } return (
+      <div
+        className="profileEditForm"
+      >
+        <EditForm user={ user } handleChange={ handleChange } />
+      </div>);
   }
 
   render() {
